@@ -2,39 +2,51 @@ const slots = [
     {
         id: 'P1',
         isAvailable: true,
+        lat: 0,
+        lng: 0
     },
     {
         id: 'P2',
-        isAvailable: false,
+        isAvailable: true,
+        lat: 0,
+        lng: 0
     },
     {
         id: 'P3',
-        isAvailable: false,
+        isAvailable: true,
+        lat: 0,
+        lng: 0
     },
     {
         id: 'P4',
         isAvailable: true,
+        lat: 0,
+        lng: 0
     },
     {
         id: 'P5',
-        isAvailable: false,
+        isAvailable: true,
+        lat: 0,
+        lng: 0
     },
     {
         id: 'P6',
         isAvailable: true,
+        lat: 0,
+        lng: 0
     },
 ]
 
 const Gateway = [
     {
-        id:'G1',
+        id: 'G1',
         name: "Entrance",
-        status:"closed",
+        status: "closed",
     },
     {
-        id:'G2',
-        name:"Exit",
-        status:"closed",
+        id: 'G2',
+        name: "Exit",
+        status: "closed",
     }
 ]
 
