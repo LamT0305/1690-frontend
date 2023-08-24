@@ -5,6 +5,10 @@
 }
 
 .container{
-  width: 100vw;
+  width: 375px;
   height: 100vh;
+  /* border: 1px solid;
+  border-radius: 10px;
+  background-color: aliceblue; */
+  /* margin: 15px auto; */
 }

@@ -15,6 +15,7 @@ const initialState = {
         lat: 0,
         lng: 0
     },
+    
     slots: Slot.slots,
     totalEmptySlot: 0,
     nearestSlot: {}

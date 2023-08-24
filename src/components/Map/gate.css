@@ -1,41 +1,42 @@
-.exit-icon{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.exit-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.entrance-icon{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+.entrance-icon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
-.exit{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.exit {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.entrance{
-    width: 50px;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.entrance {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.gateway{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
+.gateway {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.gate{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    justify-content: space-between;
+.gate {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  align-items: center;
 }

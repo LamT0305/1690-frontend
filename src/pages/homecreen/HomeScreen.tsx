@@ -6,7 +6,7 @@ import CountingSlot from '../../components/counting-slot/CountingSlot';
 const HomeScreen = () => {
     return (
         <div className='hoomscreen'>
-            <div style={{display: 'flex', flexDirection: 'column', width: '65%'}}>
+            <div style={{display: 'flex', flexDirection: 'column', width: '100 %'}}>
                 <CountingSlot/>
                 <MapC/>
             </div>

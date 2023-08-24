@@ -8,38 +8,39 @@
 } */
 
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 100px;
-    /* Khoảng cách giữa các hàng */
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  /* Khoảng cách giữa các hàng */
 }
 
 .row {
-    border-right: 1px solid;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    /* Khoảng cách giữa các ô slot */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding-right: 10px;
+  border-right: 1px solid;
+  /* Khoảng cách giữa các ô slot */
 }
 
 .col {
-    flex: none;
-    width: 120px;
-    height: 170px;
-    border-radius: 5px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  flex: none;
+  width: 65px;
+  height: 90px;
+  border-radius: 5px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .slot-image {
-    width: 50%;
-    /* Kích thước logo nhỏ lại */
-    display: block;
-    /* Hiển thị hình ảnh làm thành một khối để có thể căn giữa */
-    margin: auto;
-    /* Căn giữa hình ảnh trong ô slot */
+  width: 75%;
+  /* Kích thước logo nhỏ lại */
+  display: block;
+  /* Hiển thị hình ảnh làm thành một khối để có thể căn giữa */
+  margin: auto;
+  /* Căn giữa hình ảnh trong ô slot */
 }
