@@ -67,7 +67,7 @@ const Map = () => {
 
     // Get the dimensions of the SVG viewport
     const svgWidth = 256;
-    const svgHeight = 208; 
+    const svgHeight = 208;
     // Calculate the percentage distances
     const horizontalDistancePercent = (horizontalDistancePx / svgWidth) * 100;
     const verticalDistancePercent = (verticalDistancePx / svgHeight) * 100;
@@ -89,6 +89,11 @@ const Map = () => {
             lat: position.coords.latitude,
             lng: position.coords.longitude,
           });
+
+          console.log(
+            `Latitude: ${position.coords.latitude}`,
+            `Longitude: ${position.coords.longitude}`
+          )
 
           // Calculate percentage changes using the updated userLocation
           calculateUserCurrentLocationChangePercent(position, gateLocation);
@@ -115,28 +120,24 @@ const Map = () => {
   }, []);
 
   // dynamically adjust the length of lines
-  // const Y1Line1 = 86;
-  // const [Y2line1, setY2Line1] = useState<number>(49.2);
-  // const X1Line2 = 12.5;
-  // const [X2line2, setX2Line2] = useState<number>(86);
-  // const Y1Line3 = 38;
-  // const [Y2line3, setY2Line3] = useState<number>(50);
+  const Y1Line1 = 86;
+  const [Y2line1, setY2Line1] = useState<number>(49.2);
+  const X1Line2 = 12.5;
+  const [X2line2, setX2Line2] = useState<number>(86);
+  const Y1Line3 = 38;
+  const [Y2line3, setY2Line3] = useState<number>(50);
 
-  // useEffect(() => {
-  //   while (Math.abs(Y2line1 - latPercent) <= Y1Line1) {
-  //     setY2Line1(Math.abs(Y2line1 - latPercent));
-  //   }
+  useEffect(() => {
+    if (Math.abs(Y2line1 - latPercent) <= Y1Line1) {
+      setY2Line1(Math.abs(Y2line1 - latPercent));
+    } else if (Math.abs(X2line2 - longPercent) <= X1Line2) {
+      setX2Line2(Math.abs(X2line2 - longPercent));
+    } else if (Math.abs(Y2line3 - (latPercent - 50)) <= Y1Line3) {
+      setY2Line3(Math.abs(Y2line3 - (latPercent - 50)));
+    }
 
-  //   while (Math.abs(X2line2 - longPercent) <= X1Line2) {
-  //     setX2Line2(Math.abs(X2line2 - longPercent));
-  //   }
-
-  //   while (Math.abs(Y2line3 - (latPercent - 50)) <= Y1Line3) {
-  //     setY2Line3(Math.abs(Y2line3 - (latPercent - 50)));
-  //   }
-
-  //   console.log("a")
-  // }, [latPercent, longPercent]);
+    // console.log("a");
+  }, []);
   return (
     <>
       <div
