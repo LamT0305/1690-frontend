@@ -28,8 +28,8 @@ const Map = () => {
     const [longPercent, setLongPercent] = useState<number>(0);
 
     const gateLocation: userLocation = {
-        lat: 20.9907777,
-        lng: 105.9432744,
+        lat: 21.0240545,
+        lng: 105.7904467,
     };
 
     const {
