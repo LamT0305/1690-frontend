@@ -166,14 +166,14 @@ const Map = () => {
           <line
             x1={"86%"}
             y1={"49.2%"}
-            x2={"86%"}
+            x2={Y2line1.toString()+"%"}
             y2={"75%"}
             style={{ stroke: "green", strokeWidth: 5 }}
           />
           <line
             x1="12.5%"
             y1="50%"
-            x2="86%"
+            x2={X2line2.toString+"%"}
             y2="50%"
             style={{ stroke: "green", strokeWidth: 5 }}
           />
@@ -181,7 +181,7 @@ const Map = () => {
             x1="13%"
             y1="38%"
             x2="13%"
-            y2="50%"
+            y2={Y2line3.toString+"%"}
             style={{ stroke: "green", strokeWidth: 5 }}
           />
 
