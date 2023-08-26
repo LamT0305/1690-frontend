@@ -12,10 +12,10 @@ interface Slt {
   isAvailable: boolean;
 }
 
-interface userLocation {
-  lat: number;
-  lng: number;
-}
+// interface userLocation {
+//   lat: number;
+//   lng: number;
+// }
 
 import { SlotHook } from "../../redux/hooks/slotHooks.tsx";
 import React, { useEffect, useState } from "react";
@@ -28,12 +28,12 @@ const Map: React.FC = () => {
   const [latPercent, setLatPercent] = useState<number>(0);
   const [longPercent, setLongPercent] = useState<number>(0);
 
-  const gateLocation: userLocation = {
-    lat: 21.0240545,
-    lng: 105.7904533,
-  };
+  // const gateLocation: userLocation = {
+  //   lat: 21.0240545,
+  //   lng: 105.7904533,
+  // };
 
-  const [userLocation, setUserLocation] = useState<userLocation>();
+  // const [userLocation, setUserLocation] = useState<userLocation>();
   const {
     slots,
     handleSetUserLocation,
@@ -55,36 +55,36 @@ const Map: React.FC = () => {
     return c;
   }
 
-  function calculateUserCurrentLocationChangePercent(
-    newPosition: {
-      coords: {
-        latitude: number;
-        longitude: number;
-      };
-    },
-    currentLocation: userLocation
-  ) {
-    const latPercent =
-      (Math.abs(newPosition.coords.latitude - currentLocation.lat) /
-        currentLocation.lat) *
-      10000000;
-    console.log(latPercent);
-    const longPercent =
-      (Math.abs(newPosition.coords.longitude - currentLocation.lng) /
-        currentLocation.lng) *
-      10000000;
-    console.log(longPercent);
-    setLatPercent(latPercent);
-    setLongPercent(longPercent);
+  // function calculateUserCurrentLocationChangePercent(
+  //   newPosition: {
+  //     coords: {
+  //       latitude: number;
+  //       longitude: number;
+  //     };
+  //   },
+  //   currentLocation: userLocation
+  // ) {
+  //   const latPercent =
+  //     (Math.abs(newPosition.coords.latitude - currentLocation.lat) /
+  //       currentLocation.lat) *
+  //     10000000;
+  //   console.log(latPercent);
+  //   const longPercent =
+  //     (Math.abs(newPosition.coords.longitude - currentLocation.lng) /
+  //       currentLocation.lng) *
+  //     10000000;
+  //   console.log(longPercent);
+  //   setLatPercent(latPercent);
+  //   setLongPercent(longPercent);
 
-    console.log(newPosition);
-    console.log(currentLocation);
-    // set user location
-    setUserLocation({
-      lat: newPosition.coords.latitude,
-      lng: newPosition.coords.longitude,
-    });
-  }
+  //   console.log(newPosition);
+  //   console.log(currentLocation);
+  //   // set user location
+  //   setUserLocation({
+  //     lat: newPosition.coords.latitude,
+  //     lng: newPosition.coords.longitude,
+  //   });
+  // }
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
       positionOptions: {
