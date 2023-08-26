@@ -25,8 +25,8 @@ const Map: React.FC = () => {
   const [arr, setArr] = useState<Slt[]>([]);
   const [brr, setBrr] = useState<Slt[]>([]);
 
-  const [latPercent, setLatPercent] = useState<number>(0);
-  const [longPercent, setLongPercent] = useState<number>(0);
+  // const [latPercent, setLatPercent] = useState<number>(0);
+  // const [longPercent, setLongPercent] = useState<number>(0);
 
   // const gateLocation: userLocation = {
   //   lat: 21.0240545,
@@ -36,7 +36,7 @@ const Map: React.FC = () => {
   // const [userLocation, setUserLocation] = useState<userLocation>();
   const {
     slots,
-    handleSetUserLocation,
+    // handleSetUserLocation,
     // nearestSlot,
     // userLocation,
     // userLocationSvg,
@@ -139,24 +139,24 @@ const Map: React.FC = () => {
   }, [coords]);
 
   // dynamically adjust the length of lines
-  const Y1Line1 = 49.2;
-  const [Y2line1, setY2Line1] = useState<number>(75);
-  const X1Line2 = 12.5;
-  const [X2line2, setX2Line2] = useState<number>(86);
-  const Y1Line3 = 38;
-  const [Y2line3, setY2Line3] = useState<number>(50);
+  // const Y1Line1 = 49.2;
+  // const [Y2line1, setY2Line1] = useState<number>(75);
+  // const X1Line2 = 12.5;
+  // const [X2line2, setX2Line2] = useState<number>(86);
+  // const Y1Line3 = 38;
+  // const [Y2line3, setY2Line3] = useState<number>(50);
 
-  useEffect(() => {
-    if (Math.abs(Y2line1 - latPercent) <= Y1Line1) {
-      setY2Line1(Math.abs(Y2line1 - latPercent));
-    } else if (Math.abs(X2line2 - longPercent) <= X1Line2) {
-      setX2Line2(Math.abs(X2line2 - longPercent));
-    } else if (Math.abs(Y2line3 - (latPercent - 50)) <= Y1Line3) {
-      setY2Line3(Math.abs(Y2line3 - (latPercent - 50)));
-    }
+  // useEffect(() => {
+  //   if (Math.abs(Y2line1 - latPercent) <= Y1Line1) {
+  //     setY2Line1(Math.abs(Y2line1 - latPercent));
+  //   } else if (Math.abs(X2line2 - longPercent) <= X1Line2) {
+  //     setX2Line2(Math.abs(X2line2 - longPercent));
+  //   } else if (Math.abs(Y2line3 - (latPercent - 50)) <= Y1Line3) {
+  //     setY2Line3(Math.abs(Y2line3 - (latPercent - 50)));
+  //   }
 
-    // console.log("a");
-  }, [latPercent, longPercent]);
+  //   // console.log("a");
+  // }, [latPercent, longPercent]);
 
   return !isGeolocationAvailable ? (
     <div>Your browser does not support Geolocation</div>
@@ -187,13 +187,15 @@ const Map: React.FC = () => {
             x1={"86%"}
             y1={"49.2%"}
             x2={"86%"}
-            y2={Y2line1.toString() + "%"}
+            // y2={Y2line1.toString() + "%"}
+            y2={"75%"}
             style={{ stroke: "green", strokeWidth: 5 }}
           />
           <line
             x1="12.5%"
             y1="50%"
-            x2={X2line2.toString() + "%"}
+            // x2={X2line2.toString() + "%"}
+            x2={"86%"}
             y2="50%"
             style={{ stroke: "green", strokeWidth: 5 }}
           />
@@ -201,7 +203,8 @@ const Map: React.FC = () => {
             x1="13%"
             y1="38%"
             x2="13%"
-            y2={Y2line3.toString() + "%"}
+            // y2={Y2line3.toString() + "%"}
+            y2={"50%"}
             style={{ stroke: "green", strokeWidth: 5 }}
           />
 
