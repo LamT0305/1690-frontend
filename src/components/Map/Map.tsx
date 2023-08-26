@@ -312,6 +312,21 @@ const Map: React.FC = () => {
           </div>
         </div>
       </div>
+
+      <div className="">
+        <table>
+          <tbody>
+            <tr>
+              <td>latitude</td>
+              <td>{coords.latitude}</td>
+            </tr>
+            <tr>
+              <td>longitude</td>
+              <td>{coords.longitude}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </>
   ) : null;
 };
