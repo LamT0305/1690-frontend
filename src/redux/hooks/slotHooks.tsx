@@ -59,10 +59,7 @@ export const SlotHook = () => {
     }
   };
 
-  const handleSetStatusSpace = async (data: {
-    name: string;
-    status: string;
-  }) => {
+  const handleSetStatusSpace = async (data: any) => {
     dispatch(setLoading(true));
     try {
       dispatch(setStatusSpace(data));

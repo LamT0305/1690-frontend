@@ -47,7 +47,8 @@ const Map: React.FC = () => {
       console.log("joined");
     });
 
-    socket.on("updateLotStatus", (data: { name: string; status: string }) => {
+    socket.on("updateLotStatus", (data: any) => {
+      console.log("updateLotStatus", data);
       handleSetStatusSpace(data);
     });
     socket.on("disconnect", () => {

@@ -51,11 +51,11 @@ const slotSlice = createSlice({
     setStatusSpace(state, action: PayloadAction<any>) {
       const data = action.payload;
 
-      const { name, status } = data;
+      const { space_number, status } = data.updateStatus;
 
-      if (name && status) {
+      if (space_number && status) {
         const updateState = state.slots.map((each) =>
-          each.space_number === name ? { ...each, status } : each
+          each.space_number === space_number ? { ...each, status } : each
         );
 
         state.slots = updateState;
