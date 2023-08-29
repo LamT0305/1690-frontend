@@ -38,19 +38,18 @@ const Map: React.FC = () => {
 
   // socket
   useEffect(() => {
-    const socket = io("http://localhost:3000");
-    socket.on("connect", () => {
+    const socket = io("https://smart-car-parking-back-end.onrender.com", {
+      transports: ["websocket"],
+    });
+    socket.on("connection", () => {
       console.log("Connected to server");
     });
-    socket.on(
-      "updateLotStatus",
-      (data: { name: string; status: string }) => {
-        const fromData = new FormData();
-        fromData.append("name", data.name);
-        fromData.append("status", data.status);
-        handleSetStatusSpace(fromData);
-      }
-    );
+    socket.on("updateLotStatus", (data: { name: string; status: string }) => {
+      const fromData = new FormData();
+      fromData.append("name", data.name);
+      fromData.append("status", data.status);
+      handleSetStatusSpace(fromData);
+    });
     socket.on("disconnect", () => {
       console.log("Disconnected from server");
     });
@@ -58,7 +57,6 @@ const Map: React.FC = () => {
       socket.disconnect();
     };
   }, []);
-
 
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({

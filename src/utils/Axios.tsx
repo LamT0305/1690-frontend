@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-const END_POINT = "http://localhost:3000/api/v1/parking-space"
+const END_POINT = "https://smart-car-parking-back-end.onrender.com/api/v1/parking-space"
 // Create a custom axiosInstance of Axios
 const axiosInstance = axios.create({
   baseURL: END_POINT, // Replace with your API base URL
