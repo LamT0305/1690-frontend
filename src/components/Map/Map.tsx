@@ -48,7 +48,7 @@ const Map: React.FC = () => {
         });
 
     socket.on("updateLotStatus", (data: any) => {
-      console.log("updateLotStatus", data);
+      // console.log("updateLotStatus", data);
       handleSetStatusSpace(data);
     });
     socket.on("disconnect", () => {
@@ -92,7 +92,7 @@ const Map: React.FC = () => {
                 setUserLocation
             );
         }
-    }, [coords]);
+    }, [coords, slots]);
 
     // dynamically adjust the length of lines
     const Y1Line1 = 49.2;

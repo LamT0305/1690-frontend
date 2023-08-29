@@ -50,15 +50,16 @@ const slotSlice = createSlice({
 
     setStatusSpace(state, action: PayloadAction<any>) {
       const data = action.payload;
-
+      console.log(data)
       const { space_number, status } = data.updateStatus;
 
       if (space_number && status) {
         const updateState = state.slots.map((each) =>
-          each.space_number === space_number ? { ...each, status } : each
+           each.space_number === space_number ? { ...each, status } : each
         );
 
         state.slots = updateState;
+        console.log(state.slots)
       }
     },
 
