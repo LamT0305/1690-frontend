@@ -41,9 +41,12 @@ const Map: React.FC = () => {
     const socket = io("https://smart-car-parking-back-end.onrender.com", {
       transports: ["websocket"],
     });
-    socket.on("connection", () => {
-      console.log("Connected to server");
+    socket.emit("join", "123");
+
+    socket.on("joined", () => {
+      console.log("joined");
     });
+
     socket.on("updateLotStatus", (data: { name: string; status: string }) => {
       handleSetStatusSpace(data);
     });
