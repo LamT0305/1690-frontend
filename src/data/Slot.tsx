@@ -1,24 +1,27 @@
 const slots = [
     {
         id: 'P1',
-        isAvailable: true,
-        lat: 0,
-        lng: 0,
-        level:1
-    },
-    {
-        id: 'P2',
-        isAvailable: true,
+        isAvailable: false,
         lat: 0,
         lng: 0,
         level:1,
+        line:1
+    },
+    {
+        id: 'P2',
+        isAvailable: false,
+        lat: 0,
+        lng: 0,
+        level:1,
+        line:1,
     },
     {
         id: 'P3',
-        isAvailable: true,
+        isAvailable: false,
         lat: 0,
         lng: 0,
-        level:1
+        level:1,
+        line:1,
     },
     {
         id: 'P4',
@@ -26,20 +29,23 @@ const slots = [
         lat: 0,
         lng: 0,
         level:2,
+        line:2
     },
     {
         id: 'P5',
         isAvailable: true,
         lat: 0,
         lng: 0,
-        level:2
+        level:2,
+        line:2
     },
     {
         id: 'P6',
-        isAvailable: true,
+        isAvailable: false,
         lat: 0,
         lng: 0,
-        level:2
+        level:2,
+        line:2
     },
 ]
 

@@ -1,44 +1,72 @@
-import {useDispatch} from "react-redux";
-import {useAppSelector} from "../store";
+import { useDispatch } from "react-redux";
+import { useAppSelector } from "../store";
 
-import {RootState} from "../store";
+import { RootState } from "../store";
 
 import {
-    setUserLocation,
-    setSlotAvailability,
-    setSlots,
-    setUserLocationSvg
+  setUserLocation,
+  setUserLocationSvg,
+  setNearestSlot,
+  setStatusSpace,
+  getTotalSlots,
+  setLoading,
 } from "../slices/slotSlice";
+import axiosInstance from "../../utils/Axios";
+import { GET_API } from "../../utils/APIs";
 
 export const SlotHook = () => {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-    const {userLocation, slots, nearestSlot, userLocationSvg} = useAppSelector((state: RootState) => state.slot);
+  const { userLocation, slots, nearestSlot, userLocationSvg } = useAppSelector(
+    (state: RootState) => state.slot
+  );
 
-    const handleSetUserLocationSvg = (location: { lat: string, lng: string }) => {
-        dispatch(setUserLocationSvg(location));
+  const handleSetUserLocationSvg = (location: { lat: string; lng: string }) => {
+    dispatch(setUserLocationSvg(location));
+  };
+
+  const handleSetUserLocation = (location: { lat: number; lng: number }) => {
+    dispatch(setUserLocation(location));
+  };
+
+  const handleGetSlots = async () => {
+    dispatch(setLoading(true));
+    try {
+      const response = await axiosInstance.get(GET_API().getAllSpaces);
+      if (response.data.status == "success") {
+        dispatch(getTotalSlots(response.data.spaces));
+        // console.log(response.data.spaces);
+      }
+      dispatch(setLoading(false));
+    } catch (e) {
+      console.log(e);
+      dispatch(setLoading(false));
     }
+  };
 
-    const handleSetUserLocation = (location: { lat: number, lng: number }) => {
-        dispatch(setUserLocation(location));
+  const handleGetNearestSlots = async () => {
+    dispatch(setLoading(true));
+    try {
+      const response = await axiosInstance.get(GET_API().findNearestSpace);
+      if (response.data.status == "success") {
+        dispatch(setNearestSlot(response.data.space));
+        // console.log(response.data.space);
+      }
+      dispatch(setLoading(false));
+    } catch (e) {
+      console.log(e);
+      dispatch(setLoading(false));
     }
+  };
 
-    const handleSetSlotAvailability = (id: string, isAvailable: boolean) => {
-        dispatch(setSlotAvailability({id, isAvailable}));
-    }
-
-    const handleSetSlots = (slots: any) => {
-        dispatch(setSlots(slots));
-    }
-
-    return {
-        userLocation,
-        userLocationSvg,
-        slots,
-        nearestSlot,
-        handleSetUserLocation,
-        handleSetUserLocationSvg,
-        handleSetSlotAvailability,
-        handleSetSlots
-    }
-}
+  return {
+    userLocation,
+    userLocationSvg,
+    slots,
+    nearestSlot,
+    handleSetUserLocation,
+    handleSetUserLocationSvg,
+    handleGetSlots,
+    handleGetNearestSlots
+  };
+};

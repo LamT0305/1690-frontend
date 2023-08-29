@@ -8,7 +8,7 @@ const HomeScreen = () => {
         <div className='hoomscreen'>
             <div style={{display: 'flex', flexDirection: 'column', width: '100 %'}}>
                 <CountingSlot/>
-                <MapC/>
+                <MapC />
             </div>
         </div>
     );
