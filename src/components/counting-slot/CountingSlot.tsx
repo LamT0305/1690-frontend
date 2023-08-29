@@ -1,8 +1,6 @@
-import { useEffect, useState } from "react";
 import Click_Icon from "../../assets/click.png";
 import { SlotHook } from "../../redux/hooks/slotHooks";
 import { countAvailable } from "../../utils/Utilities";
-import IParkingSpace from "../../interfaces/parking-space.interface";
 
 const CountingSlot = () => {
   const { slots, handleGetNearestSlots, nearestSlot } = SlotHook();

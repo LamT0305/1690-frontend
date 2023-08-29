@@ -59,9 +59,6 @@ const Map: React.FC = () => {
     };
   }, []);
 
-  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
-    console.log(e.target);
-  };
 
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
