@@ -45,10 +45,7 @@ const Map: React.FC = () => {
       console.log("Connected to server");
     });
     socket.on("updateLotStatus", (data: { name: string; status: string }) => {
-      const fromData = new FormData();
-      fromData.append("name", data.name);
-      fromData.append("status", data.status);
-      handleSetStatusSpace(fromData);
+      handleSetStatusSpace(data);
     });
     socket.on("disconnect", () => {
       console.log("Disconnected from server");

@@ -49,19 +49,16 @@ const slotSlice = createSlice({
     },
 
     setStatusSpace(state, action: PayloadAction<any>) {
-      const form: FormData = action.payload;
+      const data = action.payload;
 
-      if (form) {
-        const name = form.get("name") as string;
-        const status = form.get("status") as string;
+      const { name, status } = data;
 
-        if (name && status) {
-          const updateState = state.slots.map((each) =>
-            each.space_number === name ? { ...each, status } : each
-          );
+      if (name && status) {
+        const updateState = state.slots.map((each) =>
+          each.space_number === name ? { ...each, status } : each
+        );
 
-          state.slots = updateState;
-        }
+        state.slots = updateState;
       }
     },
 
@@ -77,7 +74,7 @@ export const {
   setNearestSlot,
   setStatusSpace,
   getTotalSlots,
-  setLoading
+  setLoading,
 } = slotSlice.actions;
 
 export default slotSlice.reducer;

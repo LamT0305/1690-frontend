@@ -59,23 +59,13 @@ export const SlotHook = () => {
     }
   };
 
-  const handleSetStatusSpace = async (form: FormData) => {
+  const handleSetStatusSpace = async (data: {
+    name: string;
+    status: string;
+  }) => {
     dispatch(setLoading(true));
-
     try {
-      if (form) {
-        const name = form.get("name") as string; // Using a default value if 'name' is falsy
-        const status = form.get("status");
-
-        const response = await axiosInstance.put(
-          UPDATE_API(name).updateStatus,
-          status
-        );
-
-        if (response.data.status === "success") {
-          dispatch(setStatusSpace(form));
-        }
-      }
+      dispatch(setStatusSpace(data));
     } catch (e) {
       console.log(e);
     } finally {
@@ -92,6 +82,6 @@ export const SlotHook = () => {
     handleSetUserLocationSvg,
     handleGetSlots,
     handleGetNearestSlots,
-    handleSetStatusSpace
+    handleSetStatusSpace,
   };
 };
