@@ -12,7 +12,7 @@ import {
   setLoading,
 } from "../slices/slotSlice";
 import axiosInstance from "../../utils/Axios";
-import { GET_API, UPDATE_API } from "../../utils/APIs";
+import { GET_API } from "../../utils/APIs";
 
 export const SlotHook = () => {
   const dispatch = useDispatch();
