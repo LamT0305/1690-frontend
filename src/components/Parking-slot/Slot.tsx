@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import Logo from "../../assets/parking.png"
 import "./slot.css"
-
+import IParkingSpace from '../../interfaces/parking-space.interface.tsx';
 interface Slt {
     id: string;
     isAvailable: boolean;
@@ -31,7 +31,7 @@ const Slot = () => {
     }
 
     useEffect(() => {
-        const slts: Slt[] = [...slots];
+        const slts: IParkingSpace[] = [...slots];
 
         const result = splitArray(slts);
         setArr(result[0]);

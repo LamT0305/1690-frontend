@@ -264,34 +264,6 @@ const Map: React.FC = () => {
           </div>
         </div>
       </div>
-
-      <div className="">
-        <table>
-          <tbody>
-            <tr>
-              <td>latitude</td>
-              <td>{coords.latitude}</td>
-            </tr>
-            <tr>
-              <td>longitude</td>
-              <td>{coords.longitude}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      {/* Display nearestSlot if available */}
-      {nearestSlot && (
-        <div>
-          <p>Nearest Slot: {nearestSlot.space_number}</p>
-          {/* display all properties */}
-          <p>{nearestSlot.status}</p>
-          <p>{nearestSlot.space_number}</p>
-          <p>{nearestSlot.lat}</p>
-          <p>{nearestSlot.long}</p>
-          {/* Display other nearestSlot information as needed */}
-        </div>
-      )}
     </>
   ) : null;
 };
