@@ -9,6 +9,7 @@ import { SlotHook } from "../../redux/hooks/slotHooks.tsx";
 import React, { useEffect, useState } from "react";
 import data from "../../data/Slot.tsx";
 import { splitArray } from "../../utils/Utilities.tsx";
+import { io } from "socket.io-client";
 
 interface userLocation {
   lat: number;
@@ -26,13 +27,41 @@ const Map: React.FC = () => {
     lat: 20.9907906,
     lng: 105.9432935,
   });
-  const { slots, handleGetSlots, nearestSlot } = SlotHook();
+  const { slots, handleGetSlots, nearestSlot, handleSetStatusSpace } =
+    SlotHook();
 
   useEffect(() => {
     console.log("Calling handleGetSlots...");
     handleGetSlots();
     console.log(nearestSlot);
   }, []);
+
+  // socket
+  useEffect(() => {
+    const socket = io("http://localhost:3000");
+    socket.on("connect", () => {
+      console.log("Connected to server");
+    });
+    socket.on(
+      "updateLotStatus",
+      (data: { name: string; status: string }) => {
+        const fromData = new FormData();
+        fromData.append("name", data.name);
+        fromData.append("status", data.status);
+        handleSetStatusSpace(fromData);
+      }
+    );
+    socket.on("disconnect", () => {
+      console.log("Disconnected from server");
+    });
+    return () => {
+      socket.disconnect();
+    };
+  }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    console.log(e.target);
+  };
 
   const { coords, isGeolocationAvailable, isGeolocationEnabled } =
     useGeolocated({
@@ -136,7 +165,7 @@ const Map: React.FC = () => {
                 style={{ stroke: "green", strokeWidth: 5 }}
               />
               <line
-                x1={nearestSlot.long.toString() + "%"} 
+                x1={nearestSlot.long.toString() + "%"}
                 y1={nearestSlot.lat.toLocaleString() + "%"}
                 //
                 x2={nearestSlot.long.toString() + "%"}

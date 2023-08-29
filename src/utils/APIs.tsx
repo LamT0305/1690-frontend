@@ -5,7 +5,7 @@ export const GET_API = () => {
   };
 };
 
-export const UPDATE_API = (name: String) => {
+export const UPDATE_API = (name: string) => {
   return {
     updateStatus: `/update-status-space/${name}`,
   };

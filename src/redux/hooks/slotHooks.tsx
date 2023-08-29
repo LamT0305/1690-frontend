@@ -12,7 +12,7 @@ import {
   setLoading,
 } from "../slices/slotSlice";
 import axiosInstance from "../../utils/Axios";
-import { GET_API } from "../../utils/APIs";
+import { GET_API, UPDATE_API } from "../../utils/APIs";
 
 export const SlotHook = () => {
   const dispatch = useDispatch();
@@ -59,6 +59,30 @@ export const SlotHook = () => {
     }
   };
 
+  const handleSetStatusSpace = async (form: FormData) => {
+    dispatch(setLoading(true));
+
+    try {
+      if (form) {
+        const name = form.get("name") as string; // Using a default value if 'name' is falsy
+        const status = form.get("status");
+
+        const response = await axiosInstance.put(
+          UPDATE_API(name).updateStatus,
+          status
+        );
+
+        if (response.data.status === "success") {
+          dispatch(setStatusSpace(form));
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    } finally {
+      dispatch(setLoading(false)); // Make sure loading state is reset whether success or error
+    }
+  };
+
   return {
     userLocation,
     userLocationSvg,
@@ -67,6 +91,7 @@ export const SlotHook = () => {
     handleSetUserLocation,
     handleSetUserLocationSvg,
     handleGetSlots,
-    handleGetNearestSlots
+    handleGetNearestSlots,
+    handleSetStatusSpace
   };
 };
