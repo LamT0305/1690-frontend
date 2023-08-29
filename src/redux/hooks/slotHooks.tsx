@@ -17,7 +17,7 @@ import { GET_API } from "../../utils/APIs";
 export const SlotHook = () => {
   const dispatch = useDispatch();
 
-  const { userLocation, slots, nearestSlot, userLocationSvg } = useAppSelector(
+  const { userLocation, slots, nearestSlot, userLocationSvg, isLoading } = useAppSelector(
     (state: RootState) => state.slot
   );
 
@@ -35,7 +35,6 @@ export const SlotHook = () => {
       const response = await axiosInstance.get(GET_API().getAllSpaces);
       if (response.data.status == "success") {
         dispatch(getTotalSlots(response.data.spaces));
-        // console.log(response.data.spaces);
       }
       dispatch(setLoading(false));
     } catch (e) {
@@ -71,6 +70,7 @@ export const SlotHook = () => {
   };
 
   return {
+    isLoading,
     userLocation,
     userLocationSvg,
     slots,
